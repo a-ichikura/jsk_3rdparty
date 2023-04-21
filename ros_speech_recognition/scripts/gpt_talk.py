@@ -1,11 +1,13 @@
 #!/usr/bin/env python
 
 import rospy
+import rospkg
 from sound_play.libsoundplay import SoundClient
 import openai
 from speech_recognition_msgs.msg import SpeechRecognitionCandidates
 
-with open('../cfg/openai_api.txt') as f:
+package_path = rospkg.RosPack().get_path('tmp_openai')
+with open(package_path + '/cfg/openai_api.txt') as f:
     openai.api_key = f.read().replace('\n','')
 
 
